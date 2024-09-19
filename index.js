@@ -23,8 +23,10 @@ sequelize
 
 //using routes and controllers
 const articleRouter = require('./routes/article');
+const authorRouter = require('./routes/author');
 app.use('/',articleRouter);
 app.use('/article', articleRouter);
+app.use('/', authorRouter);
 
 //listen requests
 app.listen(3000, () => {

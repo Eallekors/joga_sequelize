@@ -13,10 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.Author, {
         foreignKey: {
-          name: 'AuthorId',
-          field: 'author_id',
-        }
-      })
+          name: 'author_id', // Foreign key in Article
+          field: 'author_id', // Field name in the database
+        },
+        as: 'author', // Alias for the association
+      });
     }
   }
   Article.init({
@@ -47,7 +48,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull:false
     },
-    author_id: DataTypes.INTEGER
+    author_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Authors', // Reference the Authors table
+        key: 'id' // Reference the primary key of the Authors table
+      }
+    }
   }, {
     sequelize,
     modelName: 'Article',
