@@ -27,6 +27,7 @@ const authorRouter = require('./routes/author');
 app.use('/',articleRouter);
 app.use('/article', articleRouter);
 app.use('/', authorRouter);
+app.use('/admin/article', articleRouter);
 
 //listen requests
 app.listen(3000, () => {

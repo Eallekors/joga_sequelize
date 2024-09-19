@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     author_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'Authors', // Reference the Authors table
         key: 'id' // Reference the primary key of the Authors table
