@@ -65,8 +65,31 @@ const updateArticle = async (req, res) => {
     }
 };
 
+const deleteArticle = async (req, res) => {
+    try {
+        // Fetch the article by primary key (ID)
+        const article = await models.Article.findByPk(req.params.id);
+        
+        // Check if article exists
+        if (!article) {
+            return res.status(404).send('Article not found');
+        }
+        
+      
+        await article.destroy();
+        
+      
+        return res.status(200).json( { message: `Deleted article whith id ${article.id}` });
+    } catch (error) {
+       
+        console.error('Error deleting article:', error);
+        return res.status(500).send(error.message);
+    }
+}
+
 //export controller functions
 module.exports = {
     createArticle,
-    updateArticle
+    updateArticle,
+    deleteArticle
 }
