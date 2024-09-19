@@ -23,10 +23,18 @@ const getArticleBySlug = (req, res) => {
         where: {
             slug: req.params.slug
         },
-        include: [{
+        include: [
+        {
             model: models.Author,
             as: 'author' // Use the alias defined in the association
-        }],
+        },
+        {
+            model: models.Tags,
+            through: {
+                model: models.ArticleTag
+            }
+        }
+        ],  
     })
     .then(article => {
         if (!article) {
