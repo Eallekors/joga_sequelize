@@ -21,20 +21,25 @@ const getAllArticles = (req, res) => {
 const getArticleBySlug = (req, res) => {
     models.Article.findOne({
         where: {
-            slug : req.params.slug
+            slug: req.params.slug
         },
         include: [{
-            model: models.Author
+            model: models.Author,
+            as: 'author' // Use the alias defined in the association
         }],
     })
     .then(article => {
-        console.log(article)
+        if (!article) {
+            return res.status(404).json({ message: "Article not found" });
+        }
+        console.log(article);
         return res.status(200).json({ article });
     })
-    .catch (error => {
+    .catch(error => {
         return res.status(500).send(error.message);
-    })
-}
+    });
+};
+
 
 //export controller functions
 module.exports = {
