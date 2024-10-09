@@ -28,7 +28,7 @@ Database: A compatible relational database.
 
 ```bash
 # 1. Clone this repository
-$ git clone https://github.com/Eallekors/expo-react
+$ git clone https://github.com/Eallekors/joga_sequelize
 
 # 2. Go into the repository
 $ cd [repository-name]
