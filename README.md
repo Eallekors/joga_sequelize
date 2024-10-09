@@ -33,7 +33,7 @@ $ git clone https://github.com/Eallekors/expo-react
 # 2. Go into the repository
 $ cd [repository-name]
 
-# 3. Configure environment variables in config file in the config folder
+# 3. Configure database variables in config file in the config folder
 
 # 4. Setup the database:
 sequelize db:create   # Create the database
